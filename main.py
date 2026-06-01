@@ -39,9 +39,12 @@ async def predict_lesion(file: UploadFile = File(...)):
     try:
         # 1. Read the image sent from Next.js
         contents = await file.read()
-        
+        file_type = file.content_type
         # 2. Package it up and send it to the Hugging Face AI model
-        headers = {"Authorization": f"Bearer {HF_TOKEN}"}
+        headers = {
+        "Authorization": f"Bearer {HF_TOKEN}",
+        "Content-Type": file_type  # 👈 Now it adapts to the file uploaded
+        }        
         response = requests.post(HF_API_URL, headers=headers, data=contents)
         
         # Catch any API limits or errors
