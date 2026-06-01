@@ -68,7 +68,3 @@ async def predict_lesion(file: UploadFile = File(...)):
     except Exception as e:
         print(f"\n❌ SERVER CRASHED! Reason: {str(e)}\n")
         raise HTTPException(status_code=500, detail=f"Backend Error: {str(e)}")
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="localhost", port=8000)
