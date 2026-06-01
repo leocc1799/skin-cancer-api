@@ -30,7 +30,7 @@ def generate_dummy_heatmap(image: Image.Image) -> str:
 
 # --- THE API INTEGRATION ---
 # Replace this string with the token you copied from Hugging Face!
-HF_TOKEN = "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" 
+HF_TOKEN = os.environ.get("HF_TOKEN") 
 HF_API_URL = "https://router.huggingface.co/hf-inference/models/Anwarkh1/Skin_Cancer-Image_Classification"
 
 @app.post("/predict")
